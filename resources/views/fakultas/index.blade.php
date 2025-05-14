@@ -1,9 +1,42 @@
 @extends('layout.main')
+@section('title', 'Fakultas')
 
 @section('content')
-
-    <h1>Fakultas</h1>
-    <table>
+     <!--begin::Row-->
+     <marquee class="text-marqee" direction="left" scrollamount="15"> 
+          <h2 class="big-title">FAKULTAS MDP</h2>
+        </marquee>
+     <div class="row">
+              <div class="col-12">
+                <!-- Default box -->
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">List Fakultas</h3>
+                    <div class="card-tools">
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-lte-toggle="card-collapse"
+                        title="Collapse"
+                      >
+                        <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                        <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-lte-toggle="card-remove"
+                        title="Remove"
+                      >
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card-body"> 
+                  <a href="{{ url('fakultas/create') }}" class="btn btn-primary"> Tambah</a>
+                  <br>
+                  <br>
+                  <table class="table table-bordered table-striped">
         <tr>
             <th>Nama</th>
             <th>Singkatan</th>
@@ -19,4 +52,13 @@
         </tr>
     @endforeach
     </table>
+                    </div>
+                  <!-- /.card-body -->
+                  <!-- /.card-footer-->
+                </div>
+                <!-- /.card -->
+              </div>
+            </div>
+            <!--end::Row-->
+    
 @endsection
