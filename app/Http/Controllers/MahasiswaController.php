@@ -12,7 +12,8 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        $mahasiswa = Mahasiswa::all(); // perintah SQL setara dengan SELECT * FROM mahasiswa
+        return view('mahasiswa.index', compact('mahasiswa')); // mengirim data ke view mahasiswa.index
     }
 
     /**
