@@ -11,12 +11,12 @@
                   <div class="card-header"><div class="card-title">Tambah Prodi</div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                  <form action="{{ route('fakultas.store')}}" method="POST">
+                  <form action="{{ route('prodi.store')}}" method="POST">
                     @csrf
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Fakultas</label>
+                        <label for="nama" class="form-label">Nama Program Studi</label>
                         <input type="text" class="form-control" name="nama" value="{{ old('nama') }}">
                         @error('nama')
                         <div class="text-danger">{{ $message }}</div>
@@ -30,16 +30,27 @@
                         @enderror
                       </div>
                       <div class="mb-3">
-                        <label for="dekan" class="form-label">Nama Dekan</label>
-                        <input type="text" class="form-control" name="dekan" value="{{ old('dekan') }}">
-                        @error('dekan')
+                        <label for="kaprodi" class="form-label">Nama Kaprodi</label>
+                        <input type="text" class="form-control" name="kaprodi" value="{{ old('kaprodi') }}">
+                        @error('kaprodi')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                         </div>
                       <div class="mb-3">
-                        <label for="wakil_dekan" class="form-label">Nama Wakil_Dekan</label>
-                        <input type="text" class="form-control" name="wakil_dekan" value="{{ old('wakil_dekan') }}">
-                        @error('wakil_dekan')
+                        <label for="Sekretaris" class="form-label">Nama Sekretaris</label>
+                        <input type="text" class="form-control" name="Sekretaris" value="{{ old('Sekretaris') }}">
+                        @error('Sekretaris')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                      </div>
+                       <div class="mb-3">
+                        <label for="fakultas_id" class="form-label">Fakultas</label>
+                        <select class="form-control" name="fakultas_id">
+                          @foreach ($fakultas as $item)
+                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                          @endforeach
+                        </select>
+                        @error('fakultas_id')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>

@@ -30,6 +30,8 @@
                   <div class="card-body">
                   <a href="{{ url('prodi/create') }}" class="btn btn-primary"> Tambah</a>
         <table class="table table-bordered table-striped">
+          <br>
+          <br>
             <th>Nama</th>
             <th>Singkatan</th>
             <th>Kaprodi</th>
