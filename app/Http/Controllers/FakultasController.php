@@ -50,32 +50,53 @@ class FakultasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fakultas $fakultas)
+    public function show( $fakultas)
     {
-        //
+        $fakultas = Fakultas::findOrFail($fakultas);
+        //dd($fakultas); // dump and die, untuk menampilkan data ke layar
+        return view('fakultas.show', compact('fakultas')); // menampilkan detail fakultas
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fakultas $fakultas)
+    public function edit( $fakultas)
     {
-        //
+        $fakultas = Fakultas::findorFail($fakultas);
+        return view('fakultas.edit', compact('fakultas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fakultas $fakultas)
+    public function update(Request $request, $fakultas)
     {
-        //
+        $fakultas = Fakultas::findOrFail($fakultas);
+
+        // validasi input
+        $input = $request->validate([
+            'nama' => 'required|',
+            'singkatan' => 'required|max:5',
+            'dekan' => 'required',
+            'wakil_dekan' => 'required',
+        ]);
+
+        $fakultas->update($input); // update data fakultas
+
+        return redirect()->route('fakultas.index')->with('success', 'Fakultas berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fakultas $fakultas)
+    public function destroy( $fakultas)
     {
-        //
+       $fakultas =
+       Fakultas::findOrFail($fakultas);
+
+       // Hapus data fakultas
+         $fakultas->delete();
+         // Redirect ke halaman fakultas.index dengan pesan sukses
+            return redirect()->route('fakultas.index')->with('success', 'Fakultas berhasil dihapus');
     }
 }
