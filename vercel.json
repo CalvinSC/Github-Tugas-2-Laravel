@@ -24,6 +24,10 @@
         {
             "src": "/js/(.*)",
             "dest": "/public/js/"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
         }
         
     ],
