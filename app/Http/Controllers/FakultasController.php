@@ -34,6 +34,9 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', Fakultas::class)) {
+            abort(403);
+        }
         // validasi input
         $input = $request->validate([
             'nama' => 'required|unique:fakultas',
@@ -73,6 +76,12 @@ class FakultasController extends Controller
     {
         $fakultas = Fakultas::findOrFail($fakultas);
 
+        if ($request->user()->cannot('update', $fakultas)) {
+            abort(403);
+        }
+
+        
+
         // validasi input
         $input = $request->validate([
             'nama' => 'required|',
@@ -89,10 +98,14 @@ class FakultasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( $fakultas)
+    public function destroy( Request $request ,$fakultas)
     {
        $fakultas =
        Fakultas::findOrFail($fakultas);
+        
+        if ($request->user()->cannot('update', $fakultas)) {
+            abort(403);
+        }
 
        // Hapus data fakultas
          $fakultas->delete();
